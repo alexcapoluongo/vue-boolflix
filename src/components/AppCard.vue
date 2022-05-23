@@ -1,8 +1,11 @@
 <template>
     <div class="container">
-        <p> {{ cardObj }} </p>
-        <p> {{ cardObj }} </p>
-        <p> Stars </p>
+       
+        <div> {{ cardObj.original_title }}</div>
+        <div> {{ cardObj.title }}</div>
+        <div> {{ cardObj.original_language }}</div>
+        <div> {{ cardObj.vote_average }}</div>
+      
     </div>
 </template>
 
@@ -18,6 +21,7 @@ export default {
 .container {
     border: 2px solid black;
     width: 100px;
+    margin: 10px
 }
 
 </style>
