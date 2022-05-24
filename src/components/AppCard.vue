@@ -4,7 +4,9 @@
         <div class="title"> Title : {{ movie.title }} </div>
         <div class="original-title"> Original:  {{ movie.original_title }} </div>
         <div class="language"> 
-            Language : {{ movie.original_language }} <img :src="image" alt="" srcset="">
+            Language : {{ movie.original_language }} 
+            <img v-if=" movie.original_language == 'en' || movie.original_language == 'it' " :src= "require(`../assets/img/${movie.original_language}.png`)" alt="" srcset=""> 
+            <img v-else :src="image" alt="" srcset=""> 
          </div>
         <div class="vote"> Vote : {{ movie.vote_average }} </div>
         
@@ -13,25 +15,26 @@
 </template>
 
 <script>
-import imageEn from "../assets/img/en.png"
-import imageFr from "../assets/img/fr.png"
-import imageIt from "../assets/img/it.png"
-import imageWr from "../assets/img/zz.png"
+import otherLanguage from "../assets/img/zz.png"
 
 export default {
     name: "AppCard",
     props: {
-        movie: Object
+        movie: Object,
     },
 
     data() {
         return{
-            nameLanguage: "",
-            image: imageEn
+            image: otherLanguage,
         }
     },
 
     methods: {
+        // differentLanguage: function() {
+        //     if ( this.movie.original_language !== "en" || this.movie.original_language !== "it" ) {
+        //        this.visible = false }
+        // }
+        
     }
 }
 </script>
