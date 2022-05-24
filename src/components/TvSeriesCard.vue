@@ -11,7 +11,7 @@
             <img v-if=" tvseries.original_language == 'en' || tvseries.original_language == 'it' " :src= "require(`../assets/img/${tvseries.original_language}.png`)" alt="" srcset=""> 
             <img v-else :src="image" alt="" srcset=""> 
          </div>
-        <div class="vote"> Vote : {{ tvseries.vote_average }} </div>
+        <div class="vote"> Vote : &#9733; {{ this.starsCount((parseInt(movie.vote_average / 2))) }} {{ this.stars }} {{ (parseInt(movie.vote_average / 2)) }} </div>
         
       
     </div>
@@ -29,11 +29,15 @@ export default {
     data() {
         return{
             image: otherLanguage,
+            stars: ""
         }
     },
 
     methods: {
-       
+       starsCount(number) {
+           if (number == 1)
+            number = "&#9733;"
+       }
         
     }
 }

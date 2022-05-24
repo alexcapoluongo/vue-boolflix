@@ -12,7 +12,7 @@
             <img v-if=" movie.original_language == 'en' || movie.original_language == 'it' " :src= "require(`../assets/img/${movie.original_language}.png`)" alt="" srcset=""> 
             <img v-else :src="image" alt="" srcset=""> 
          </div>
-        <div class="vote"> Vote : {{ parseInt(movie.vote_average / 2)}} </div>
+        <div class="vote"> Vote : {{ this.stars }} {{ this.starsCount((parseInt(movie.vote_average / 2))) }} {{ (parseInt(movie.vote_average / 2))}} </div>
         
       
     </div>
@@ -30,17 +30,23 @@ export default {
     data() {
         return{
             image: otherLanguage,
+            stars: ''
         }
     },
 
     methods: {
-       
+       starsCount(number) {
+           if (number == 1) {
+            this.stars = '<i class="far fa-star"></i>'
+           }
+       }
         
     }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "./style/common.scss";
 
 .container {
     border: 2px solid black;
