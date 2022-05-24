@@ -1,7 +1,7 @@
 <template>
   <header>
       <input type="text" v-model= "inputUser" >
-      <button @click="modifyAxios" >Search film</button>
+      <button @click="$emit('searchClick', inputUser)" >Search film</button>
   </header>
 </template>
 
@@ -14,20 +14,10 @@ export default {
         inputUser: "",
         }
     },
-    methods: {
-        
-        modifyAxios: function() {
-            this.movieSearched = this.inputUser
-            console.log(this.movieSearched);
-            this.inputUser="";
-         
-        }
-
-    }
 }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

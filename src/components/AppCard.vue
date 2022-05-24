@@ -1,10 +1,11 @@
 <template>
     <div class="container">
        
-        <div> {{ cardObj.original_title }}</div>
-        <div> {{ cardObj.title }}</div>
-        <div> {{ cardObj.original_language }}</div>
-        <div> {{ cardObj.vote_average }}</div>
+        <div> {{ movie.title }} </div>
+        <div> {{ movie.original_title }} </div>
+        <div> {{ movie.original_language }} </div>
+        <div> {{ movie.vote_average }} </div>
+        
       
     </div>
 </template>
@@ -12,7 +13,9 @@
 <script>
 export default {
     name: "AppCard",
-    props: ["cardObj"],
+    props: {
+        movie: Object
+    },
 }
 </script>
 
