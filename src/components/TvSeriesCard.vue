@@ -2,6 +2,9 @@
     <div class="container">
        
         <div class="title"> Title : {{ tvseries.name }} </div>
+        <div class="image"> 
+            <img :src="(`https://image.tmdb.org/t/p/w200${tvseries.poster_path}`)" alt="" srcset="">
+        </div>
         <div class="original-title"> Original:  {{ tvseries.original_name }} </div>
         <div class="language"> 
             Language : {{ tvseries.original_language }} 
@@ -40,8 +43,13 @@ export default {
 
 .container {
     border: 2px solid black;
-    width: 100px;
-    margin: 10px
+    margin: 10px;
+
+}
+
+.image {
+    width: 400px;
+    height: 400px;
 }
 
 
