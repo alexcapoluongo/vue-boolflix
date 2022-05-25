@@ -8,17 +8,15 @@
         <div class="original-title"> Original:  {{ tvseries.original_name }} </div>
         <div class="language"> 
             Language : {{ tvseries.original_language }} 
-            <img v-if=" tvseries.original_language == 'en' || tvseries.original_language == 'it' " :src= "require(`../assets/img/${tvseries.original_language}.png`)" alt="" srcset=""> 
-            <img v-else :src="image" alt="" srcset=""> 
+            <img v-if="languageHasImage()" :src= "require(`../assets/img/${tvseries.original_language}.png`)" alt="" srcset=""> 
          </div>
-        <div class="vote"> Vote : &#9733; {{ this.starsCount((parseInt(movie.vote_average / 2))) }} {{ this.stars }} {{ (parseInt(movie.vote_average / 2)) }} </div>
+        <div class="vote"> Vote :  {{ this.stars }} {{ (parseInt(tvseries.vote_average / 2)) }} </div>
         
       
     </div>
 </template>
 
 <script>
-import otherLanguage from "../assets/img/zz.png"
 
 export default {
     name: "TvSeriesCard",
@@ -28,12 +26,17 @@ export default {
 
     data() {
         return{
-            image: otherLanguage,
-            stars: ""
+            stars: "",
+            flags: ['en', 'it', 'fr']
         }
     },
 
     methods: {
+
+        languageHasImage() {
+            return this.flags.includes(this.tvseries.original_language)
+        },
+
        starsCount(number) {
            if (number == 1)
             number = "&#9733;"

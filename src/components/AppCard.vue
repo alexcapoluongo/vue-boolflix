@@ -9,17 +9,20 @@
         <div class="original-title"> Original:  {{ movie.original_title }} </div>
         <div class="language"> 
             Language : {{ movie.original_language }} 
-            <img v-if=" movie.original_language == 'en' || movie.original_language == 'it' " :src= "require(`../assets/img/${movie.original_language}.png`)" alt="" srcset=""> 
-            <img v-else :src="image" alt="" srcset=""> 
+            <img v-if="languageHasImage()" :src= "require(`../assets/img/${movie.original_language}.png`)" alt="" srcset=""> 
          </div>
-        <div class="vote"> Vote : {{ this.stars }} {{ this.starsCount((parseInt(movie.vote_average / 2))) }} {{ (parseInt(movie.vote_average / 2))}} </div>
+        <div class="vote"> Vote : {{ (parseInt(movie.vote_average / 2))}}
+        <p>
+            <i v-for="n in 5" :key="n" class="fa-star" :class="n <= (parseInt(movie.vote_average / 2)) ? 'fas' : 'far' "></i>
+        </p> 
+        </div>
         
       
     </div>
 </template>
 
 <script>
-import otherLanguage from "../assets/img/zz.png"
+
 
 export default {
     name: "AppCard",
@@ -29,15 +32,19 @@ export default {
 
     data() {
         return{
-            image: otherLanguage,
-            stars: ''
+            flags: ['it', 'en', 'fr']
         }
     },
 
     methods: {
+
+        languageHasImage() {
+            return this.flags.includes(this.movie.original_language)
+        },
+
        starsCount(number) {
            if (number == 1) {
-            this.stars = '<i class="far fa-star"></i>'
+            this.stars = `<i class="far fa-star"></i>`
            }
        }
         
