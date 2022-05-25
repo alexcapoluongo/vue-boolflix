@@ -46,6 +46,7 @@ export default {
 
 .container {
     height: 454px;
+    width: 304px;
     border: 2px solid white;
     margin: 10px;
     color:white;

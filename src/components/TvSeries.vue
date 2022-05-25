@@ -28,6 +28,7 @@ export default {
 
 .movie-list {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

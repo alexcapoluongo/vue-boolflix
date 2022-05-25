@@ -17,6 +17,9 @@
             <p class="stars">
                 <i v-for="n in 5" :key="n" class="fa-star" :class="n <= (parseInt(movie.vote_average / 2)) ? 'fas' : 'far' "></i>
             </p> 
+            <p class="overview-movie">
+                {{ movie.overview }}
+            </p>
             </div>
         </div>
         
@@ -44,6 +47,7 @@ export default {
         languageHasImage() {
             return this.flags.includes(this.movie.original_language)
         },        
+
     }
 }
 </script>
@@ -53,6 +57,7 @@ export default {
 
 .container {
     height: 454px;
+    width: 304px;
     border: 2px solid white;
     margin: 10px;
     color:white;
@@ -87,6 +92,10 @@ export default {
     .stars {
         color: rgb(255, 179, 0);
     }
+
+    .overview-movie {
+        margin-top: 20px;
+    }
 }
 
 .container:hover .wrap-title{
@@ -97,7 +106,6 @@ export default {
 .image {
     text-align: center;
     margin-bottom: 30px;
-    // width: 400px;
 
     img {
         width: 300px;
