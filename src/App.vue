@@ -66,6 +66,7 @@ body {
 
 h1 {
   color: white;
+  margin: 30px;
 }
 
 </style>
