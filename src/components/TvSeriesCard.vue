@@ -12,7 +12,7 @@
                 Language : {{ tvseries.original_language }} 
                 <img v-if="languageHasImage()" :src= "require(`../assets/img/${tvseries.original_language}.png`)" alt="" srcset=""> 
             </div>
-            <div class="vote"> Vote :  {{ this.stars }} {{ (parseInt(tvseries.vote_average / 2)) }} </div>
+            <div class="vote"> Vote :  {{ this.stars }} {{ (Math.ceil(tvseries.vote_average / 2)) }} </div>
         </div>
       
     </div>
